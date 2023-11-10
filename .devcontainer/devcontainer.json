@@ -14,8 +14,8 @@
 	"features": {
 		"ghcr.io/devcontainers/features/dotnet:2": {}
 	},
-	"forwardPorts": [5000],
-    "postCreateCommand": "until curl -s http://localhost:5000 > /dev/null; do sleep 1; done && xdg-open http://localhost:5000"
+	"forwardPorts": [5063],
+    "postCreateCommand": "until curl -s http://localhost:5063 > /dev/null; do sleep 1; done && xdg-open http://localhost:5063"
 
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
