@@ -24,6 +24,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    
     // log app.Environment
     Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
 
