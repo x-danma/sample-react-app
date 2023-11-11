@@ -24,7 +24,7 @@
 				"readme.md"
 			],
 			"repositories": {
-				"my_org/my_repo": {
+				"x-danma/sample-dotnet-api": {
 					"permissions": {
 						"issues": "write",
 						"pull_requests": "write"
