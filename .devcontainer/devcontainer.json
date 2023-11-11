@@ -7,20 +7,30 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {},
 		"ghcr.io/devcontainers-contrib/features/npm-package:1": {},
-		"ghcr.io/devcontainers/features/dotnet:2": {}
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	// "postCreateCommand": "cd sample-react-app/ && rnpm install && npm run dev",
 	"postCreateCommand": "npm install",
 	"postAttachCommand": {
 		"server": "cd backend/src/sample-dotnet-api/ && dotnet watch",
-		"client": "cd sample-react-app/ && npm install && npm run dev"
+		"client": "cd sample-react-app/ && npm install && npm run dev",
+		"ports": "gh codespace ports visibility 5063:public -c $CODESPACE_NAME"
 	},
 	"customizations": {
 		"codespaces": {
 			"postStartCommand": "cd sample-react-app/ && rnpm install && npm run dev",
 			"openFiles": [
 				"readme.md"
-			]
+			],
+			"repositories": {
+				"my_org/my_repo": {
+					"permissions": {
+						"issues": "write",
+						"pull_requests": "write"
+					}
+				}
+			}
 		},
 		"vscode": {
 			"extensions": [
@@ -30,7 +40,19 @@
 			]
 		}
 	},
-	"forwardPorts": [5063]  // Add this line to make port 5063 always public
+	"forwardPorts": [
+		5063,
+		5173
+	],
+	"portsAttributes": {
+		"5063": {
+			"elevateIfNeeded": true,
+			"label": "Backend"
+		},
+		"5173": {
+			"label": "Frontend App"
+		}
+	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
