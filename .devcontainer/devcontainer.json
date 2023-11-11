@@ -6,16 +6,18 @@
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {},
-		"ghcr.io/devcontainers-contrib/features/npm-package:1": {}
+		"ghcr.io/devcontainers-contrib/features/npm-package:1": {},
+		"ghcr.io/devcontainers/features/dotnet:2": {}
 	},
 	// "postCreateCommand": "cd sample-react-app/ && rnpm install && npm run dev",
 	"postCreateCommand": "npm install",
 	"postAttachCommand": {
-		"server": "cd sample-react-app/ && npm install && npm run dev"
+		"server": "cd backend/src/sample-dotnet-api/ && dotnet watch",
+		"client": "cd sample-react-app/ && npm install && npm run dev"
 	},
 	"customizations": {
 		"codespaces": {
-			"postStartCommand": "cd sample-react-app/ && npm install && npm run dev",
+			"postStartCommand": "cd sample-react-app/ && rnpm install && npm run dev",
 			"openFiles": [
 				"readme.md"
 			]
@@ -23,10 +25,12 @@
 		"vscode": {
 			"extensions": [
 				"GitHub.copilot",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"ms-dotnettools.csdevkit"
 			]
 		}
-	}
+	},
+	"forwardPorts": [5063]  // Add this line to make port 5063 always public
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
