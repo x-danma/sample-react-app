@@ -10,27 +10,31 @@
 	},
 	// "postCreateCommand": "cd sample-react-app/ && rnpm install && npm run dev",
 	"postCreateCommand": "npm install",
+	"postAttachCommand": {
+		"server": "cd sample-react-app/ && npm install && npm run dev"
+	},
 	"customizations": {
+		"codespaces": {
+			"postStartCommand": "cd sample-react-app/ && npm install && npm run dev",
+			"openFiles": [
+				"readme.md"
+			]
+		},
 		"vscode": {
 			"extensions": [
-				"eamodio.gitlens",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"eamodio.gitlens"
 			]
 		}
 	}
-
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
-
 	// Configure tool-specific properties.
 	// "customizations": {},
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
